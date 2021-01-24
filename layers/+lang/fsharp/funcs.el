@@ -32,3 +32,9 @@
   (pcase (spacemacs//fsharp-backend)
     (`lsp (lsp))
     (_ (eglot-ensure))))
+
+(defun spacemacs//fsharp-setup-stupid-indent ()
+  "Setup stupid-indent-mode as the indent function handler."
+  (require 'stupid-indent-mode)
+  (setq stupid-indent-level fsharp-stupid-indent-level)
+  (stupid-indent-mode))

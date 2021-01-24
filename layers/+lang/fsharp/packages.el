@@ -17,6 +17,7 @@
     fsharp-mode
     ggtags
     helm-gtags
+    stupid-indent-mode
     ))
 
 (defun fsharp/post-init-company ()
@@ -36,7 +37,10 @@
                                              (locate-user-emacs-file (f-join ".cache" "eglot"))))
       (setq fsharp-doc-idle-delay .2)
       (spacemacs/register-repl 'fsharp-mode 'fsharp-show-subshell "F#")
-      (add-hook 'fsharp-mode-hook #'spacemacs//fsharp-setup-backend))
+      (add-hook 'fsharp-mode-hook #'spacemacs//fsharp-setup-backend)
+
+      (when (eq fsharp-indent-mode 'stupid)
+        (add-hook 'fsharp-mode-hook #'spacemacs//fsharp-setup-stupid-indent)))
     :config
     (progn
       (defun spacemacs/fsharp-load-buffer-file-focus ()
@@ -86,3 +90,6 @@
 
 (defun fsharp/post-init-helm-gtags ()
   (spacemacs/helm-gtags-define-keys-for-mode 'fsharp-mode))
+
+(defun fsharp/init-stupid-indent-mode ()
+  (setq stupid-indent-level 4))

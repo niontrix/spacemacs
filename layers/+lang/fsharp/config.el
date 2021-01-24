@@ -15,3 +15,12 @@
   "The backend to use for IDE features.
 Possible values are `lsp' and `eglot'.
 If `nil' then 'eglot` is the default backend unless `lsp' layer is used")
+
+(defvar fsharp-indent-mode nil
+  "The function to use for handling the indentation in F# files.
+Possible values are `default' and `stupid'.
+If `nil' then the default indent function of `fsharp-mode' is used.")
+
+(defvar fsharp-stupid-indent-level 4
+  "The indentation level to use when using stupid-indent-mode as the indentation handler.
+The default value is 4.")
